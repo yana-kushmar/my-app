@@ -1,22 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import Accordion from "./components/accordion/accordion";
 import Rating, {Star} from "./components/Rating";
+import {Switcher} from "./components/On-Off/OnOff";
 
 
-function sum(a: number, b: number) {
 
-    alert(a + b)
-}
-sum(23, 12);
+
 function App() {
+    const [isActive, setIsActive] = useState(false)
+
 
 
     return (
         <div>
 
             <input/>
-            <input  checked={true} value="yo" type={"password"}/>
+            <input checked={true} value="yo" type={"password"}/>
 
             <PageTitle title={"App Component"}/>
             <PageTitle title={"My friends"}/>
@@ -31,6 +31,8 @@ function App() {
             <Rating value={3}/>
             <Rating value={4}/>
             <Rating value={5}/>
+            <Switcher isActive={isActive} setIsActive={setIsActive}/>
+
 
 
         </div>
@@ -38,17 +40,16 @@ function App() {
 }
 
 type PagePropsType = {
-    title : string
+    title: string
 }
-function PageTitle (props: PagePropsType) {
+
+function PageTitle(props: PagePropsType) {
     return (
         <div>
-        <h1>{props.title}</h1>
+            <h1>{props.title}</h1>
         </div>
     )
 }
-
-
 
 
 export default App;

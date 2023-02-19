@@ -1,19 +1,19 @@
 import React, {useState} from 'react';
 import './App.css';
 import Accordion from "./components/accordion/accordion";
-import Rating, {Star} from "./components/Rating";
+import Rating, {Star} from "./Rating/Rating";
 import {Switcher} from "./components/On-Off/OnOff";
-
-
+import OnOff from "./components/On-Off/OnOff_2";
+import UncontrolledAcordion from "./components/UncontrolledAccordion/UncontrolledAcordion";
+import UncontrolledRating from "./Rating/UncontrolledRating";
 
 
 function App() {
     const [isActive, setIsActive] = useState(false)
 
 
-
     return (
-        <div>
+        <div className={"App"}>
 
             <input/>
             <input checked={true} value="yo" type={"password"}/>
@@ -32,7 +32,16 @@ function App() {
             <Rating value={4}/>
             <Rating value={5}/>
             <Switcher isActive={isActive} setIsActive={setIsActive}/>
-
+            <div>
+                <OnOff />
+            </div>
+            <div>
+                <UncontrolledAcordion titleValue={"Menu"} />
+                <UncontrolledAcordion titleValue={"Users"} />
+            </div>
+            <div>
+                <UncontrolledRating />
+            </div>
 
 
         </div>

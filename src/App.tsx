@@ -6,12 +6,15 @@ import {Switcher} from "./components/On-Off/OnOff";
 import OnOff from "./components/On-Off/OnOff_2";
 import UncontrolledAcordion from "./components/UncontrolledAccordion/UncontrolledAcordion";
 import UncontrolledRating from "./Rating/UncontrolledRating";
+import UncontrolledOnOff from './components/On-Off/UncontrolledOnOff_2';
 
 
 function App() {
     const [isActive, setIsActive] = useState(false)
     const [ratingValue, setRatingValue] = useState<RatingValueType>(0)
     const [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false)
+
+    const [switchON, setSwitchON] = useState<boolean>(false)
 
 
 
@@ -41,7 +44,8 @@ function App() {
             {/*<Rating value={5}/>*/}
             <Switcher isActive={isActive} setIsActive={setIsActive}/>
             <div>
-                <OnOff/>
+                <OnOff on={switchON} onChange={setSwitchON}/> \
+                <UncontrolledOnOff onChange={setSwitchON}/>
             </div>
             <div>
                 <UncontrolledAcordion titleValue={"Menu"}/>

@@ -1,5 +1,8 @@
-.select {
-border: 1px solid black;
+.select .main {
+    border: 1px solid black;
+    display: inline-block;
+    min-height: 20px;
+    min-width: 50px;
 }
 
 .items {
@@ -8,5 +11,10 @@ border: 1px solid black;
     padding: 5px;
     border: 1px black solid;
 
+}
+
+.item.selected {
+    background-color: blue;
+    color: white;
 }
 

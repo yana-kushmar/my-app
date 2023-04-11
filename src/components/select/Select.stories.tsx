@@ -9,24 +9,33 @@ export default {
     component: Select
 }
 
-export const WithValue = () =>
-        <Select onChange={action("Value changed")}
-                value={"2"}
+export const WithValue = () => {
+    const [value, setValue] = useState("2")
+    return <>
+        <Select onChange={setValue}
+                value={value}
                 items={[
                     {value: "1", title: "Minsk"},
                     {value: "2", title: "New York"},
                     {value: "3", title: "Dubai"},
                 ]}/>
+    </>
+}
 
 
-export const WithoutValue = () =>
-    <Select onChange={action("Value changed")}
+export const WithoutValue = () => {
+    const [value, setValue] = useState(null)
+        return <>
+    <Select onChange={setValue}
+            value={value}
 
             items={[
                 {value: "1", title: "Minsk"},
                 {value: "2", title: "New York"},
                 {value: "3", title: "Dubai"},
             ]}/>
+        </>
+}
 
 
 

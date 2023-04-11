@@ -14,25 +14,31 @@ type SelectPropsType = {
 export function Select(props: SelectPropsType) {
 
     const [active, setActive] = useState(false)
+    const [hoveredElement, setHoveredElement] = useState(props.value)
 
     const selectedItem = props.items.find(el => el.value === props.value)
+    const hoveredItem = props.items.find(el => el.value === hoveredElement)
 
     const toggleItems = () => setActive(!active)
+    const onItemClick = (value: any) => {props.onChange(value);
+        toggleItems()}
 
     return (
         <>
-            <select>
-                <option value="">Minsk</option>
-                <option value="">New York</option>
-                <option value="">Dubai</option>
-            </select>
+
         <div className={s.select}>
-            <h3 onClick={toggleItems}>{selectedItem && selectedItem.title}</h3>
+            <span  className={s.main} onClick={toggleItems}>{selectedItem && selectedItem.title}</span>
 
             {
                 active &&
             <div className={s.items}>
-            {props.items.map(i => <div key={i.value}>{i.title}</div>)}
+            {props.items.map(i => <div
+                onMouseEnter={() => {setHoveredElement(i.value)}}
+                className={s.item + " " + (hoveredItem === i ? s.selected: "")}
+                key={i.value}
+                onClick={() => {onItemClick(i.value)}}
+                >{i.title}
+            </div>)}
             </div>
             }
         </div>
